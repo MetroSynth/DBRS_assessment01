@@ -2,9 +2,7 @@
 
 ### SOURCING THE DATA
 I started my analysis by locally storing the 2017 311 complaint record sub-set provided at the following link in the description of this assessment. 
-
-https://s3.amazonaws.com/dbrs-recruit/2017_subset.csv
-
+<https://s3.amazonaws.com/dbrs-recruit/2017_subset.csv>
 For production use, I would rely on the Socrata API to pull the data programmatically. For testing and validation the local file made the most sense so I would not trip any API-call limits and throttling restrictions mentioned in the NYC Open Data developer notes. I used filtering arguments in the Socrata API call to ensure only data for 2017, and only the necessary fields would be pulled with any given API-call.
 
 
@@ -12,10 +10,12 @@ For production use, I would rely on the Socrata API to pull the data programmati
 Next, I validated the data for gaps and noticed most glaringly the number of complaints unattributable to any borough. I noticed that most had zip codes included, which meant using a separate dimension table to merge into the main data set would solve most of these issues. 
 
 ### MAPPING THE MISSING BOROUGHS
-I was able to locate a website that had a zip code to borough mapping, and saved this locally as tabular data in a csv. That file is saved locally as:
+I was able to locate a website that had a zip code to borough mapping, and saved this locally as tabular data in a csv. The URL of that website is: <https://www.nycbynatives.com/nyc_info/new_york_city_zip_codes.php>
+And the file is saved as **zip_to_borough.csv**
 
 ### POPULATION DATA
-The last raw piece of data that would be necessary for questions A2 and A3 was the national population count for all zip codes as derived from the 2010 census. I downloaded this data set from the provided link and utilized it as a locally stored csv file.
+The last raw piece of data that would be necessary for questions A2 and A3 was the national population count for all zip codes as derived from the 2010 census. I downloaded this data set from the provided link and utilized it as a locally stored csv file: **ZCTA.csv**
+
 ### ENVIRONMENT
 For slicing merging and analyzing this data I employed Jupyter notebook and heavily relied on the Pandas python library as I typically would have done for a project such as this. This methodology was also the one recommended in the assessment description.  
 
