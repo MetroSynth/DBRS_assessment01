@@ -46,6 +46,7 @@ Since the Socrata API will use up some of the user's daily API call limit, I inc
 
 **PROCEDURE:**
 For this task I used pandas to group all records on the BOROUGH field I mapped in the data-cleaning step. I extracted only the top 10 complaint types and creating a function that returned the resultant data-frame. 
+The findings are displayed below:
 
 <table border="1" class="dataframe">
   <thead>
@@ -199,7 +200,7 @@ For this task I used pandas to group all records on the BOROUGH field I mapped i
     </tr>
     <tr>
       <th>Street Condition</th>
-      <td>29410</td>
+      <td>29411</td>
     </tr>
     <tr>
       <th>HEAT/HOT WATER</th>
@@ -274,6 +275,8 @@ For this task I used pandas to group all records on the BOROUGH field I mapped i
 >Consider only the 10 most common overall complaint types.  For the 10 most populous zip codes, how many of each of those 10 types were there in 2017?
 
 **PROCEDURE:** 
+I extracted a set of all unique zip codes appearing in the data and merged them with the population data from a local file. Next I joined these zip codes and populations with their respective complaint records. I then summed the top record counts for each, grouped on their zip code, and returned the resultant dataframe to the user.
+The findings are displayed below:
 
 <table border="1" class="dataframe">
   <thead>
@@ -704,6 +707,13 @@ For this task I used pandas to group all records on the BOROUGH field I mapped i
 
 
 ## A3: COMPLAINT INDICES FOR EACH BOROUGH
+
+>Considering all complaint types. Which boroughs are the biggest "complainers" relative to the size of the population in 2017? Meaning, calculate a complaint-index that adjusts for population of the borough.
+
+**PROCEDURE**
+To determine a complaint index for each borough I decided I would simply divide the total complaints per Borough with their respective populations to achieve an index that could be described as *complaints per each member of the population*. I merged a table containing total population per borough with one containing total complaints per borough and then divided the first fields by the second to achieve the resultant index. I then returned this dataframe to the user.  
+The findings are displayed below:
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -747,7 +757,7 @@ For this task I used pandas to group all records on the BOROUGH field I mapped i
       <th>4</th>
       <td>QUEENS</td>
       <td>2233454.0</td>
-      <td>570144</td>
+      <td>570146</td>
       <td>0.255275</td>
     </tr>
   </tbody>
