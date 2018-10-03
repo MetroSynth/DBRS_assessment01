@@ -28,11 +28,17 @@ For slicing merging and analyzing this data I employed Jupyter notebook and heav
 For generating a cleaned master data frame, I joined in the zip-code-to-borough dimension table mentioned above. I also noticed many records had improper text data in the zip code field or too many digits. For the differentiating the properly mapped borough field from the one brought in with the raw data, I renamed the old one as **borough_raw**. I used regex to strip out the unnecessary data where possible prior to performing the join, so that as many records as possible would join properly.
 
 ### RUNNING THE ANALYSIS
-To find the results of the three questions from the assessment I broke out the result sets into three separate function. Running each of the three returns it’s respective data frame to the notebook’s user to view on screen. I have also included statements to save the results as a local csv for later analysis. 
+To find the results of the three questions from the assessment I broke out the result sets into three separate function. Running each of these three will return its respective dataframe to the notebook’s user to view on screen. I have also included statements to save the results as a local csv for later analysis. The three result files are:
+1. top10_by_borough.csv
+2. top10_by_top_zips.csv
+3. borough_complaint_indices.csv
 
 ### DEV mode vs. PRODUCTION MODE 
 Since the Socrata API will use up some of the user's daily API call limit, I included an option for the user to pull the live data from the NYC Open Data site or pull from the local file. The default mode is DEV mode. To pull the live data change the below variable in the notebook to True:
+
 `dev_mode = True`
+
+# ANALYZING THE RESULTS
 
 ## A1: TOP 10 COMPLAINT TYPES PER BOROUGH
 
