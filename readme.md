@@ -27,12 +27,19 @@ For slicing merging and analyzing this data I employed Jupyter notebook and heav
 ### DATA CLEANING
 For generating a cleaned master data frame, I joined in the zip-code-to-borough dimension table mentioned above. I also noticed many records had improper text data in the zip code field or too many digits. For the differentiating the properly mapped borough field from the one brought in with the raw data, I renamed the old one as **borough_raw**. I used regex to strip out the unnecessary data where possible prior to performing the join, so that as many records as possible would join properly.
 
+### RUNNING THE ANALYSIS
+To find the results of the three questions from the assessment I broke out the result sets into three separate function. Running each of the three returns it’s respective data frame to the notebook’s user to view on screen. I have also included statements to save the results as a local csv for later analysis. 
+
+### DEV mode vs. PRODUCTION MODE 
+Since the Socrata API will use up some of the user's daily API call limit, I included an option for the user to pull the live data from the NYC Open Data site or pull from the local file. The default mode is DEV mode. To pull the live data change the below variable in the notebook to True:
+`dev_mode = True`
+
 ## A1: TOP 10 COMPLAINT TYPES PER BOROUGH
 
 > Objective: Consider only the 10 most common overall complaint types. For each borough, how many of each of those 10 types were there in 2017?
 
 **PROCEDURE:**
-For this task I used pandas to group all records on the BOROUGH 
+For this task I used pandas to group all records on the BOROUGH field I mapped in the data-cleaning step. I extracted only the top 10 complaint types and creating a function that returned the resultant data-frame. 
 
 <table border="1" class="dataframe">
   <thead>
@@ -256,7 +263,11 @@ For this task I used pandas to group all records on the BOROUGH
   </tbody>
 </table>
 
-## A2: COMPLAINT STATISTICS FOR 10 MOST POPULOUS ZIP CODES IN NYC
+## A2: COMPLAINT STATISTICS FOR 10 MOST POPULOUS ZIP CODES IN NYC>
+
+>Consider only the 10 most common overall complaint types.  For the 10 most populous zip codes, how many of each of those 10 types were there in 2017?
+
+**PROCEDURE:** 
 
 <table border="1" class="dataframe">
   <thead>
