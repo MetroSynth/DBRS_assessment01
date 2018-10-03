@@ -24,8 +24,15 @@ The last raw piece of data that would be necessary for questions A2 and A3 was t
 ### ENVIRONMENT
 For slicing merging and analyzing this data I employed Jupyter notebook and heavily relied on the Pandas python library as I typically would have done for a project such as this. This methodology was also the one recommended in the assessment description.  
 
+### DATA CLEANING
+For generating a cleaned master data frame, I joined in the zip-code-to-borough dimension table mentioned above. I also noticed many records had improper text data in the zip code field or too many digits. For the differentiating the properly mapped borough field from the one brought in with the raw data, I renamed the old one as **borough_raw**. I used regex to strip out the unnecessary data where possible prior to performing the join, so that as many records as possible would join properly.
 
 ## A1: TOP 10 COMPLAINT TYPES PER BOROUGH
+
+> Objective: Consider only the 10 most common overall complaint types. For each borough, how many of each of those 10 types were there in 2017?
+
+**PROCEDURE:**
+For this task I used pandas to group all records on the BOROUGH 
 
 <table border="1" class="dataframe">
   <thead>
