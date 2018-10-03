@@ -3,7 +3,12 @@
 ### SOURCING THE DATA
 I started my analysis by locally storing the 2017 311 complaint record sub-set provided at the following link in the description of this assessment. 
 <https://s3.amazonaws.com/dbrs-recruit/2017_subset.csv>
-For production use, I would rely on the Socrata API to pull the data programmatically. For testing and validation the local file made the most sense so I would not trip any API-call limits and throttling restrictions mentioned in the NYC Open Data developer notes. I used filtering arguments in the Socrata API call to ensure only data for 2017, and only the necessary fields would be pulled with any given API-call.
+For production use, I would rely on the Socrata API to pull the data programmatically. For testing and validation the local file made the most sense so I would not trip any API-call limits and throttling restrictions mentioned in the NYC Open Data developer notes. I used filtering arguments in the Socrata API call to ensure only data for 2017, and only the necessary fields would be pulled with any given API-call:
+
+`field_list = ','.join(['unique_key','created_date','borough','incident_zip','city','complaint_type'])`
+
+`results = client.get("fhrw-4uyv",limit,select=field_list,where="created_date='2017'")`
+
 
 
 ### VALIDATION
