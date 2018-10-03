@@ -1,5 +1,12 @@
 # DBRS Tech Assessment Process Notes:
 
+### DEV mode vs. PRODUCTION MODE 
+Since the Socrata API will use up some of the user's daily API call limit, I included an option for the user to pull the live data from the NYC Open Data site or pull from the local file. The default mode is DEV mode. To pull the live data, change the below variable in the notebook to False:
+
+`dev_mode = False`
+
+**NOTE** I will not be committing this local csv to the git repository I have created on AWS since it is ~166MB. When running the functions from the notebook hosted on the repository make sure to set dev_mode to False
+
 ### SOURCING THE DATA
 I started my analysis by locally storing the 2017 311 complaint record sub-set provided at the following link in the description of this assessment. 
 <https://s3.amazonaws.com/dbrs-recruit/2017_subset.csv>
@@ -32,11 +39,6 @@ To find the results of the three questions from the assessment I broke out the r
 1. top10_by_borough.csv
 2. top10_by_top_zips.csv
 3. borough_complaint_indices.csv
-
-### DEV mode vs. PRODUCTION MODE 
-Since the Socrata API will use up some of the user's daily API call limit, I included an option for the user to pull the live data from the NYC Open Data site or pull from the local file. The default mode is DEV mode. To pull the live data change the below variable in the notebook to True:
-
-`dev_mode = False`
 
 # ANALYZING THE RESULTS
 
