@@ -1,4 +1,26 @@
-**A1: TOP 10 COMPLAINT TYPES PER BOROUGH**
+# DBRS Tech Assessment Process Notes:
+
+### SOURCING THE DATA
+I started my analysis by locally storing the 2017 311 complaint record sub-set provided at the following link in the description of this assessment. 
+
+https://s3.amazonaws.com/dbrs-recruit/2017_subset.csv
+
+For production use, I would rely on the Socrata API to pull the data programmatically. For testing and validation the local file made the most sense so I would not trip any API-call limits and throttling restrictions mentioned in the NYC Open Data developer notes. I used filtering arguments in the Socrata API call to ensure only data for 2017, and only the necessary fields would be pulled with any given API-call.
+
+
+### VALIDATION
+Next, I validated the data for gaps and noticed most glaringly the number of complaints unattributable to any borough. I noticed that most had zip codes included, which meant using a separate dimension table to merge into the main data set would solve most of these issues. 
+
+### MAPPING THE MISSING BOROUGHS
+I was able to locate a website that had a zip code to borough mapping, and saved this locally as tabular data in a csv. That file is saved locally as:
+
+### POPULATION DATA
+The last raw piece of data that would be necessary for questions A2 and A3 was the national population count for all zip codes as derived from the 2010 census. I downloaded this data set from the provided link and utilized it as a locally stored csv file.
+### ENVIRONMENT
+For slicing merging and analyzing this data I employed Jupyter notebook and heavily relied on the Pandas python library as I typically would have done for a project such as this. This methodology was also the one recommended in the assessment description.  
+
+
+## A1: TOP 10 COMPLAINT TYPES PER BOROUGH
 
 <table border="1" class="dataframe">
   <thead>
@@ -222,7 +244,8 @@
   </tbody>
 </table>
 
-**COMPLAINT STATISTICS FOR 10 MOST POPULOUS ZIP CODES IN NYC**
+## A2: COMPLAINT STATISTICS FOR 10 MOST POPULOUS ZIP CODES IN NYC
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -646,6 +669,57 @@
     <tr>
       <th>Derelict Vehicle</th>
       <td>834</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## A3: COMPLAINT INDICES FOR EACH BOROUGH
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BOROUGH</th>
+      <th>POPULATION</th>
+      <th>TOTAL COMPLAINTS</th>
+      <th>COMPLAINT INDEX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BRONX</td>
+      <td>1382480.0</td>
+      <td>434913</td>
+      <td>0.314589</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BROOKLYN</td>
+      <td>2504700.0</td>
+      <td>746780</td>
+      <td>0.298151</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MANHATTAN</td>
+      <td>1518994.0</td>
+      <td>450011</td>
+      <td>0.296256</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>STATEN ISLAND</td>
+      <td>468730.0</td>
+      <td>127836</td>
+      <td>0.272728</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>QUEENS</td>
+      <td>2233454.0</td>
+      <td>570144</td>
+      <td>0.255275</td>
     </tr>
   </tbody>
 </table>
